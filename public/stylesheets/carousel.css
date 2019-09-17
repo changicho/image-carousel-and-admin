@@ -1,43 +1,39 @@
 :root {
-  --slide-width:400px;
-  --slide-width-left: -400px;
-
-  --slide-height: 300px;
+  --slide-width: 600px;
+  --slide-height: 400px;
 }
 
 .slide {
   width: inherit;
   height: inherit;
-  transition: all 0.7s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
-.slide div{
-  height:inherit;
-  width:inherit;
+.slide div {
+  height: inherit;
+  width: inherit;
 }
 
 ul {
   overflow: hidden;
-  width:var(--slide-width);
-  height:var(--slide-height);
+  width: var(--slide-width);
+  height: var(--slide-height);
 
-  margin:0px;
-  padding:0px;
-  display:flex;
-  list-style:none;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  list-style: none;
 }
 
-ul li{
+ul li {
   position: relative;
-  left:var(--slide-width-left);
-  margin:0px;
-  padding:0px;
+  margin: 0px;
+  padding: 0px;
 }
 
-.center{
-  width:inherit;
+.center {
+  width: inherit;
   height: inherit;
   display: flex;
   justify-content: center;
 }
-

@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index.html');
 });
 
+router.get('/ver1', function(req, res, next) {
+  res.render('carousel_v1.html');
+});
+
 module.exports = router;
