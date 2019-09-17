@@ -1,0 +1,43 @@
+:root {
+  --slide-width:400px;
+  --slide-width-left: -400px;
+
+  --slide-height: 300px;
+}
+
+.slide {
+  width: inherit;
+  height: inherit;
+  transition: all 0.7s ease-in-out;
+}
+
+.slide div{
+  height:inherit;
+  width:inherit;
+}
+
+ul {
+  overflow: hidden;
+  width:var(--slide-width);
+  height:var(--slide-height);
+
+  margin:0px;
+  padding:0px;
+  display:flex;
+  list-style:none;
+}
+
+ul li{
+  position: relative;
+  left:var(--slide-width-left);
+  margin:0px;
+  padding:0px;
+}
+
+.center{
+  width:inherit;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+}
+
