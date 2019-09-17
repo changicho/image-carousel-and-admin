@@ -8,8 +8,11 @@
 
 ## 설치 방법
 
-별도의 설치가 필요 없다.
-정적인 html, css, javascript로 이루어져 있음
+```sh
+npm install
+```
+
+> 시작하기 전에 프로젝트 root 폴더에서 npm install 명령을 실행해주세요
 
 ## 사용 예제
 
@@ -24,4 +27,3 @@
 changi cho – [@깃허브 주소](https://github.com/changicho)
 
 ## 기여 방법
-
