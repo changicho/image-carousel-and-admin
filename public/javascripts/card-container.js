@@ -27,7 +27,12 @@ class card_container {
         current_card_content.classList.add("focus");
         current_slide_indicator.classList.remove("hidden");
 
-        current_first_indicator.click();
+        if (
+          evt.target.className !== "indicator" &&
+          evt.target.className !== "indicator selected"
+        ) {
+          current_first_indicator.click();
+        }
       });
     }, []);
   }
@@ -36,7 +41,11 @@ class card_container {
       let target_type = evt.target.classList[0];
 
       if (target_type === "indicator") {
-        console.log(evt.target.dataset.page);
+        
+        // 이 부분에 슬라이드 이동 부분을 추가하면 된다.
+        // slide_index = evt.target.dataset.page (integer)
+        // console.log(evt.target.dataset.page);
+
         this.unselect_all_indicator();
         evt.target.classList.add("selected");
         return;
