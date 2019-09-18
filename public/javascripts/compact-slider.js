@@ -47,8 +47,8 @@ class compact_slider {
   }
   fill_button_event() {
     this.animation_end = true;
-    let button_prev = this.div_slider.querySelector("#button-prev");
-    let button_next = this.div_slider.querySelector("#button-next");
+    let button_prev = this.div_slider.querySelector("#prev");
+    let button_next = this.div_slider.querySelector("#next");
 
     button_prev.addEventListener("click", () => {
       if (this.animation_end) {
@@ -126,4 +126,4 @@ class compact_slider {
   }
 }
 
-new compact_slider();
+let my_compact_slider = new compact_slider();

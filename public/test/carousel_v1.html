@@ -1,17 +1,30 @@
 <link rel="stylesheet" href="../stylesheets/carousel.css" />
+<link rel="stylesheet" href="../stylesheets/main.css" />
 
-<div class="center">
+<style>
+  /* .center {
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+  } */
+</style>
+
+<body>
   <div class="compact-slider">
-    <ul></ul>
-    <div id="compact-button-container">
-      <div id="button-prev">이전</div>
-      <div id="button-next">다음</div>
+    <ul class="slides"></ul>
+    <div class="button" id="prev">
+      <div class="button_icon"></div>
+    </div>
+    <div class="button" id="next">
+      <div class="button_icon"></div>
+    </div>
+    <div class="compact-button-container">
       <div id="button-content"></div>
     </div>
   </div>
-</div>
+</body>
 
-<!-- <script src="../javascripts/main.js"></script> -->
 <script>
   let slides = ["one", "two", "three", "four", "five"];
   let slides_color = ["red", "blue", "green", "yellow", "purple"];
