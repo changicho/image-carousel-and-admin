@@ -71,7 +71,9 @@ class compact_slider {
   }
 
   fill_transitionend_event() {
-    this.slide_list[0].addEventListener("transitionend", () => {
+    this.div_slider.addEventListener("transitionend", evt => {
+      evt.target.style.transition = "all 0.5s ease-in-out";
+      evt.target.style.zIndex = "1";
       this.animation_end = true;
     });
   }
@@ -84,8 +86,6 @@ class compact_slider {
       if (this.axis_list[index] + index * slide_width >= this.end_point) {
         this.axis_list[index] = -index * slide_width;
         cur.style.zIndex = -100;
-      } else {
-        cur.style.zIndex = 1;
       }
 
       cur.style.transform = `translate(${this.axis_list[index]}px, 0)`;
@@ -106,8 +106,6 @@ class compact_slider {
       if (this.axis_list[index] + index * slide_width < this.start_point) {
         this.axis_list[index] = this.end_point - (index + 1) * slide_width;
         cur.style.zIndex = -100;
-      } else {
-        cur.style.zIndex = 1;
       }
 
       cur.style.transform = `translate(${this.axis_list[index]}px, 0)`;
@@ -123,6 +121,29 @@ class compact_slider {
   reset_interval() {
     clearInterval(this.interval);
     this.fill_interval_event();
+  }
+
+  move_to(destination_index) {
+    let slide_size = this.slide_list.length;
+    let current_index = this.current_index;
+
+    let diff_next =
+      (destination_index - current_index + slide_size) % slide_size;
+    let diff_prev =
+      (current_index - destination_index + slide_size) % slide_size;
+
+    if (diff_next > diff_prev) {
+      diff_next = 0;
+    } else {
+      diff_prev = 0;
+    }
+
+    for (let i = 0; i < diff_next; i++) {
+      this.move_next();
+    }
+    for (let i = 0; i < diff_prev; i++) {
+      this.move_prev();
+    }
   }
 }
 
