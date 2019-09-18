@@ -148,3 +148,25 @@ class compact_slider {
 }
 
 let my_compact_slider = new compact_slider();
+
+let div_compact_slider = document.querySelector(".compact-slider");
+
+div_compact_slider.addEventListener("click", evt => {
+  let target_type = evt.target.classList[0];
+
+  if (target_type === "indicator") {
+    my_compact_slider.move_to(evt.target.dataset.page-1)
+
+    unselect_all_indicator();
+    evt.target.classList.add("selected");
+    return;
+  }
+});
+
+function unselect_all_indicator() {
+  let indicator_list = div_compact_slider.querySelectorAll(".indicator");
+
+  Array.from(indicator_list).reduce((pre, cur) => {
+    cur.classList.remove("selected");
+  }, []);
+}

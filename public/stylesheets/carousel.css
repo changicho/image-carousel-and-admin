@@ -7,7 +7,13 @@
 
   --button-next: url("../images/slide/icon-right.png");
   --button-prev: url("../images/slide/icon-left.png");
-  --button-background : transparent;
+  --button-background: transparent;
+
+  --indicator-size: 0.8em;
+  --indicator-selected-background: white;
+  --indicator-selected-border-color: skyblue;
+  --indicator-unselected-background: gray;
+  --indicator-unselected-border-color: transparent;
 
   width: var(--slide-width);
   height: var(--slide-height);
@@ -20,7 +26,7 @@
   height: inherit;
   /* transition: all 0.5s ease-in-out; */
   transition: all 0.1s;
-  
+
   position: relative;
 }
 
@@ -48,7 +54,7 @@
   top: 0rem;
   position: absolute;
   z-index: 10;
-  
+
   background: var(--button-background);
 
   display: flex;
@@ -69,9 +75,36 @@
   background-size: contain;
 }
 
-.compact-slider #prev .button_icon{
+.compact-slider #prev .button_icon {
   background-image: var(--button-prev);
 }
-.compact-slider #next .button_icon{
+.compact-slider #next .button_icon {
   background-image: var(--button-next);
+}
+
+.compact-slider .indicator-box {
+  background: white;
+  position: absolute;
+  width: inherit;
+  display: flex;
+  justify-content: center;
+
+  bottom: 1rem;
+  z-index: 20;
+}
+
+.compact-slider .indicator-box .indicator {
+  width: var(--indicator-size);
+  height: var(--indicator-size);
+
+  background: var(--indicator-unselected-background);
+  margin: 0rem 0.1rem;
+
+  border-radius: 1rem;
+  border: var(--indicator-unselected-border-color) 0.1rem solid;
+}
+
+.compact-slider .indicator-box .selected {
+  background: var(--indicator-selected-background);
+  border: var(--indicator-selected-border-color) 0.1rem solid;
 }
