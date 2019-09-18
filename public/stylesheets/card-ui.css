@@ -1,0 +1,119 @@
+.card-container {
+  width: inherit;
+  display: flex;
+  justify-content: center;
+
+  --indicator-size: 0.8rem;
+  --indicator-selected-background: white;
+  --indicator-selected-border-color: skyblue;
+  --indicator-unselected-background: gray;
+  --indicator-unselected-border-color: transparent;
+
+  --box-shadow-color: #222;
+
+  --card-title-color: white;
+  --card-title-size: 1.5rem;
+
+  --card-ship-background: purple url("../images/card/maple.png");
+  --card-system-background: red url("../images/card/mongrol.png");
+  --card-shop-background: blue url("../images/card/rainbow.png");
+  --card-read-background: orange url("../images/card/volcano.png");
+  --card-more-background: skyblue url("../images/card/snow.png");
+}
+
+.card-container .card {
+  position: relative;
+
+  width: 10rem;
+  height: 14rem;
+  margin: 0.2rem;
+}
+
+.card-container .card .card-content {
+  position: absolute;
+  width: 10rem;
+  height: 14rem;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 3rem;
+  background-size: 50%;
+}
+
+.card-container .card .card-title {
+  position: absolute;
+  text-align: center;
+  left: 0;
+  right: 0;
+
+  width: 6rem;
+  margin: auto;
+  bottom: 1.5rem;
+}
+
+.card-container .card .card-title p {
+  font-size: var(--card-title-size);
+  color: var(--card-title-color);
+}
+
+.card-container .card .focus {
+  width: 12rem;
+  height: 16rem;
+  margin-top: -1rem;
+  margin-left: -1rem;
+  z-index: 10;
+
+  box-shadow: 0rem 0rem 2rem 0rem var(--box-shadow-color);
+}
+
+.card-container .card .focus .card-title {
+  bottom: 2.5rem;
+}
+
+.card-container .card .slide-indicator {
+  position: absolute;
+  width: inherit;
+  display: flex;
+  justify-content: center;
+
+  bottom: 0rem;
+  z-index: 20;
+}
+
+.card-container .card .slide-indicator .indicator {
+  width: var(--indicator-size);
+  height: var(--indicator-size);
+
+  background: var(--indicator-unselected-background);
+  margin: 0rem 0.1rem;
+
+  border-radius: 1rem;
+  border: var(--indicator-unselected-border-color) 0.1rem solid;
+}
+
+.card-container .card .slide-indicator .selected {
+  background: var(--indicator-selected-background);
+  border: var(--indicator-selected-border-color) 0.1rem solid;
+}
+
+.card-container .card .hidden {
+  display: none;
+}
+
+.card-container .ship-card {
+  background: var(--card-ship-background);
+}
+
+.card-container .system-card {
+  background: var(--card-system-background);
+}
+
+.card-container .shop-card {
+  background: var(--card-shop-background);
+}
+.card-container .read-card {
+  background: var(--card-read-background);
+}
+.card-container .more-card {
+  background: var(--card-more-background);
+}
