@@ -2,8 +2,8 @@
  *
  */
 class compact_slider {
-  constructor() {
-    this.div_slider = document.querySelector(".compact-slider");
+  constructor(query) {
+    this.div_slider = document.querySelector(query);
     this.slide_container = this.div_slider.querySelector("ul");
 
     this.slide_width = this.div_slider.clientWidth;
