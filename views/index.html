@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="../stylesheets/carousel.css" />
     <link rel="stylesheet" href="../stylesheets/card-ui.css" />
     <link rel="stylesheet" href="../stylesheets/card-ui-slide.css" />
-    <title>card-ui-ver2</title>
+    <link rel="stylesheet" href="../stylesheets/mini-carousel.css" />
+    <title>welcome to my carousel world!</title>
   </head>
 
   <body>
@@ -68,23 +69,88 @@
         </div>
       </div>
       <div class="card-ui-downside">
-        <div class="mini-carousel-container">
-          <div class="compact-slider">
-            <ul class="slides"></ul>
-            <div class="button" id="prev">
-              <div class="button_icon"></div>
-            </div>
-            <div class="button" id="next">
-              <div class="button_icon"></div>
-            </div>
+        <div class="compact-slider" id="compact-slider_card">
+          <ul class="slides"></ul>
+          <div class="button" id="prev">
+            <div class="button_icon"></div>
+          </div>
+          <div class="button" id="next">
+            <div class="button_icon"></div>
           </div>
         </div>
       </div>
     </div>
-  </body>
 
-  <script src="../javascripts/fill_card.js"></script>
-  <script src="../javascripts/card-container.js"></script>
-  <script src="../javascripts/compact-slider.js"></script>
-  <script src="../javascripts/card-ui-event.js"></script>
+    <script src="../javascripts/card/fill_card.js"></script>
+    <script src="../javascripts/card/card-container.js"></script>
+    <script src="../javascripts/slide/compact-slider.js"></script>
+    <script src="../javascripts/card/card-ui-event.js"></script>
+
+    <div class="mini-carousel-container">
+      <div class="compact-slider" id="compact-slider1">
+        <ul class="slides"></ul>
+        <div class="button" id="prev">
+          <div class="button_icon"></div>
+        </div>
+        <div class="button" id="next">
+          <div class="button_icon"></div>
+        </div>
+      </div>
+      <div class="content">
+        <h1>당신의 희생은</h1>
+        <h1>가치있습니다.</h1>
+        <p>
+          내 삶의 목적이 잘먹고 잘 사는 사람은 보통 사람이라는 거에요. 왜냐.
+          내가 잘 먹고 잘살려면 남의 것 뜯어 먹고 남 괴롭히고, 이런 거밖에
+          없으니까요. 그런데 영웅이란, 다른 사람들을 위해 사는 사람이라는 거죠.
+          그리고 (보통사람들)보다 숭고한 목적과, 숭고한 삶을 추구한다는 거에요.
+        </p>
+        <a href="https://www.youtube.com/watch?v=DnkN5Oh0mPA"
+          >영상을 보고 함께해요 ></a
+        >
+      </div>
+    </div>
+    <script>
+      let second_ul = document.querySelector("#compact-slider1 ul");
+      let slide_image_style_second = [
+        {
+          url: `url('../images/slide/captain.png')`,
+          color: "blue",
+          link: `https://www.google.com/search?q=captain+america`
+        },
+        {
+          url: `url('../images/slide/ironman.png')`,
+          color: "gold",
+          link: `https://www.google.com/search?q=iron+man`
+        },
+        {
+          url: `url('../images/slide/spider.png')`,
+          color: "orange",
+          link: `https://www.google.com/search?q=spider+man`
+        },
+        {
+          url: `url('../images/slide/thor.png')`,
+          color: "gray",
+          link: `https://www.google.com/search?q=thor`
+        },
+        {
+          url: `url('../images/slide/venom.png')`,
+          color: "purple",
+          link: `https://www.google.com/search?q=venom`
+        }
+      ];
+
+      function make_template(style) {
+        let template = `<li class="slide"><div style = "background-image:${style.url}; background-color:${style.color}" OnClick="location.href ='${style.link}'"></div></li>`;
+        return template;
+      }
+
+      slide_image_style_second.reduce((pre, cur, index) => {
+        second_ul.innerHTML += make_template(cur);
+      }, 0);
+    </script>
+    <script>
+      let compact_slider2 = new compact_slider("#compact-slider1");
+    </script>
+  </body>
 </html>
