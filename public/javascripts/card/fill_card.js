@@ -1,96 +1,29 @@
-let ul = document.querySelector(".compact-slider ul");
-let indicator_box = document.querySelector(".indicator-box");
+class fill_card {
+  constructor(data) {
+    let ul = document.querySelector(".compact-slider ul");
 
-let slide_image_style = [
-  {
-    color: "blue",
-    theme: "ship-card"
-  },
-  {
-    color: "gold",
-    theme: "ship-card"
-  },
-  {
-    color: "orange",
-    theme: "ship-card"
-  },
-  {
-    color: "gray",
-    theme: "ship-card"
-  },
-  {
-    color: "purple",
-    theme: "system-card"
-  },
-  {
-    color: "skyblue",
-    theme: "system-card"
-  },
-  {
-    color: "red",
-    theme: "system-card"
-  },
-  {
-    color: "rosybrown",
-    theme: "system-card"
-  },
-  {
-    color: "aqua",
-    theme: "system-card"
-  },
-  {
-    color: "khaki",
-    theme: "shop-card"
-  },
-  {
-    color: "beige",
-    theme: "shop-card"
-  },
-  {
-    color: "royalblue",
-    theme: "shop-card"
-  },
-  {
-    color: "teal",
-    theme: "shop-card"
-  },
-  {
-    color: "yellowgreen",
-    theme: "read-card"
-  },
-  {
-    color: "chocolate",
-    theme: "read-card"
-  },
-  {
-    color: "coral",
-    theme: "more-card"
-  },
-  {
-    color: "crimson",
-    theme: "more-card"
-  }
-];
+    function make_template(data, index) {
+      let template = `<li class="slide"><div class="content">${make_template_inner(
+        data,
+        index
+      )}</div></li>`;
+      return template;
+    }
 
-function make_template(data, index) {
-  let template = `<li class="slide"><div class="content">${make_template_inner(data, index)}</div></li>`;
-  return template;
-}
+    data.reduce((pre, cur, index) => {
+      ul.innerHTML += make_template(cur, index);
+    }, 0);
 
-slide_image_style.reduce((pre, cur, index) => {
-  ul.innerHTML += make_template(cur, index);
-}, 0);
-
-function make_template_inner(data, index) {
-  let template = `
+    function make_template_inner(data, index) {
+      let template = `
   <div class="left-content">
   <div
     class="image"
-    style="background-image : url('../images/card/slide_image/${index}.png'); "
+    style="background-image : url(${data.image_url}); "
   ></div>
 </div>
 <div class="right-content">
-  <div class="subtitle ${data.theme}">잠이 보약입니다...</div>
+  <div class="subtitle ${data.theme}">${data.keyword}</div>
   
   <h1>어제 잘 주무셨나요?</h1>
   <p>
@@ -105,5 +38,9 @@ function make_template_inner(data, index) {
   </a>
 </div>
 `;
-  return template;
+      return template;
+    }
+  }
 }
+
+new fill_card(slide_data_card);

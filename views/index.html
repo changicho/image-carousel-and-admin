@@ -91,11 +91,6 @@
       </div>
     </div>
 
-    <script src="../javascripts/card/fill_card.js"></script>
-    <script src="../javascripts/card/card-container.js"></script>
-    <script src="../javascripts/slide/compact-slider.js"></script>
-    <script src="../javascripts/card/card-ui-event.js"></script>
-
     <div class="mini-carousel-container">
       <div class="compact-slider" id="compact-slider1">
         <ul class="slides"></ul>
@@ -120,52 +115,31 @@
         >
       </div>
     </div>
-    <script>
-      let second_ul = document.querySelector("#compact-slider1 ul");
-      let slide_image_style_second = [
-        {
-          url: `url('../images/slide/captain.png')`,
-          color: "blue",
-          link: `https://www.google.com/search?q=captain+america`
-        },
-        {
-          url: `url('../images/slide/ironman.png')`,
-          color: "gold",
-          link: `https://www.google.com/search?q=iron+man`
-        },
-        {
-          url: `url('../images/slide/spider.png')`,
-          color: "orange",
-          link: `https://www.google.com/search?q=spider+man`
-        },
-        {
-          url: `url('../images/slide/thor.png')`,
-          color: "gray",
-          link: `https://www.google.com/search?q=thor`
-        },
-        {
-          url: `url('../images/slide/venom.png')`,
-          color: "purple",
-          link: `https://www.google.com/search?q=venom`
-        }
-      ];
-
-      function make_template(style) {
-        let template = `<li class="slide"><div style = "background-image:${style.url}; background-color:${style.color}" OnClick="location.href ='${style.link}'"></div></li>`;
-        return template;
-      }
-
-      slide_image_style_second.reduce((pre, cur, index) => {
-        second_ul.innerHTML += make_template(cur);
-      }, 0);
-    </script>
-    <script>
-      let compact_slider2 = new compact_slider("#compact-slider1");
-      compact_slider2.auto();
-    </script>
 
     <div class="outro">
       <h1>좋은 하루 되세요!</h1>
     </div>
+
+    <script src="../javascripts/set_data.js"></script>
+    <!-- <script src="../javascripts//fetch.js"></script> -->
+
+    <script src="../javascripts/card/fill_card.js"></script>
+    <script src="../javascripts/slide/fill_slide.js"></script>
+
+    <script src="../javascripts/card/card-container.js"></script>
+    <script src="../javascripts/slide/compact-slider.js"></script>
+    <script src="../javascripts/card/card-ui-event.js"></script>
+
+    <script>
+      let my_card_container = new card_container();
+      let upside_slider = new compact_slider("#compact-slider_card");
+
+      new card_ui(my_card_container, upside_slider);
+    </script>
+
+    <script>
+      let downside_slider = new compact_slider("#compact-slider1");
+      downside_slider.auto();
+    </script>
   </body>
 </html>
