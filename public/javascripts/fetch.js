@@ -13,4 +13,7 @@ fetch("/api/get_data", {
 
     slide_data_card = json_data.slide;
     slide_data_second = json_data.card;
-  });
+  })
+  .then(function(){
+    new main_script();
+  })
