@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link rel="stylesheet" href="../stylesheets/card-ui.css" />
+    <link rel="stylesheet" href="../stylesheets/carousel.css" />
+    <link rel="stylesheet" href="../stylesheets/card-ui-slide.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="card-ui">
+      <div class="card-ui-upside">
+        <div class="card">
+          <div class="card-content ship-card focus">
+            <div class="card-title"><p>ship</p></div>
+          </div>
+          <div class="slide-indicator">
+            <div class="indicator selected" data-page="0"></div>
+            <div class="indicator" data-page="1"></div>
+            <div class="indicator" data-page="2"></div>
+            <div class="indicator" data-page="3"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content system-card">
+            <div class="card-title"><p>system</p></div>
+          </div>
+          <div class="slide-indicator hidden">
+            <div class="indicator" data-page="4"></div>
+            <div class="indicator" data-page="5"></div>
+            <div class="indicator" data-page="6"></div>
+            <div class="indicator" data-page="7"></div>
+            <div class="indicator" data-page="8"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content shop-card">
+            <div class="card-title"><p>shop</p></div>
+          </div>
+          <div class="slide-indicator hidden">
+            <div class="indicator" data-page="9"></div>
+            <div class="indicator" data-page="10"></div>
+            <div class="indicator" data-page="11"></div>
+            <div class="indicator" data-page="12"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content read-card">
+            <div class="card-title"><p>read</p></div>
+          </div>
+          <div class="slide-indicator hidden">
+            <div class="indicator" data-page="13"></div>
+            <div class="indicator" data-page="14"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content more-card">
+            <div class="card-title"><p>more</p></div>
+          </div>
+          <div class="slide-indicator hidden">
+            <div class="indicator" data-page="15"></div>
+            <div class="indicator" data-page="16"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-ui-downside">
+        <div class="mini-carousel-container">
+          <div class="compact-slider">
+            <ul class="slides"></ul>
+            <div class="button" id="prev">
+              <div class="button_icon"></div>
+            </div>
+            <div class="button" id="next">
+              <div class="button_icon"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="../javascripts/fill_card.js"></script>
+  <script src="../javascripts/card-container.js"></script>
+  <script src="../javascripts/compact-slider.js"></script>
+  <script src="../javascripts/card-ui-event.js"></script>
+</html>

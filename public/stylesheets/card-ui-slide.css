@@ -1,0 +1,43 @@
+.mini-carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mini-carousel-container .compact-slider {
+  width: 70rem;
+  height: 30rem;
+  margin: 1rem 5rem;
+}
+
+
+
+.mini-carousel-container .compact-slider .slides .slide .content {
+  width: 30rem;
+  margin: 1rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+.mini-carousel-container .compact-slider .slides .slide .content  h1 {
+  margin:0rem 0rem;
+  font-size: 3rem;
+}
+
+.mini-carousel-container .compact-slider .slides .slide .content  a {
+  width:fit-content;
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+.mini-carousel-container .compact-slider .slides .slide .content  a:hover {
+  text-decoration: underline;
+}
+
+.mini-carousel-container .compact-slider .slides .slide div {
+  text-decoration: none;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50%;
+}
