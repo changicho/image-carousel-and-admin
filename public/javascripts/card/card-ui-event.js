@@ -1,5 +1,5 @@
 let my_card_container = new card_container();
-let my_compact_slider = new compact_slider();
+let my_compact_slider = new compact_slider("#compact-slider_card");
 
 let div_compact_slider = document.querySelector(".card-ui");
 

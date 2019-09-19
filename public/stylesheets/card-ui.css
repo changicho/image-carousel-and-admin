@@ -135,13 +135,7 @@
   margin: var(--section-margin);
 }
 
-.card-ui .card-ui-downside .mini-carousel-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.card-ui .card-ui-downside .mini-carousel-container .compact-slider {
+.card-ui .card-ui-downside .compact-slider {
   width: 70rem;
   height: 30rem;
   margin: 0rem 2rem;
