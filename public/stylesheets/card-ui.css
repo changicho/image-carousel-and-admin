@@ -1,4 +1,11 @@
-.card-container {
+.card-ui{
+  display: flex;
+  flex-direction: column;
+
+  --section-margin : 2rem 0rem;
+}
+
+.card-ui-upside {
   width: inherit;
   display: flex;
   justify-content: center;
@@ -19,9 +26,11 @@
   --card-shop-background: blue url("../images/card/rainbow.png");
   --card-read-background: orange url("../images/card/volcano.png");
   --card-more-background: skyblue url("../images/card/snow.png");
+
+  margin:var(--section-margin );
 }
 
-.card-container .card {
+.card-ui-upside .card {
   position: relative;
 
   width: 10rem;
@@ -29,7 +38,7 @@
   margin: 0.2rem;
 }
 
-.card-container .card .card-content {
+.card-ui-upside .card .card-content {
   position: absolute;
   width: 10rem;
   height: 14rem;
@@ -39,7 +48,7 @@
   background-size: 50%;
 }
 
-.card-container .card .card-title {
+.card-ui-upside .card .card-title {
   position: absolute;
   text-align: center;
   left: 0;
@@ -50,12 +59,12 @@
   bottom: 1.5rem;
 }
 
-.card-container .card .card-title p {
+.card-ui-upside .card .card-title p {
   font-size: var(--card-title-size);
   color: var(--card-title-color);
 }
 
-.card-container .card .focus {
+.card-ui-upside .card .focus {
   width: 12rem;
   height: 16rem;
   margin-top: -1rem;
@@ -65,11 +74,11 @@
   box-shadow: 0rem 0rem 2rem 0rem var(--box-shadow-color);
 }
 
-.card-container .card .focus .card-title {
+.card-ui-upside .card .focus .card-title {
   bottom: 2.5rem;
 }
 
-.card-container .card .slide-indicator {
+.card-ui-upside .card .slide-indicator {
   position: absolute;
   width: inherit;
   display: flex;
@@ -79,7 +88,7 @@
   z-index: 20;
 }
 
-.card-container .card .slide-indicator .indicator {
+.card-ui-upside .card .slide-indicator .indicator {
   width: var(--indicator-size);
   height: var(--indicator-size);
 
@@ -90,29 +99,37 @@
   border: var(--indicator-unselected-border-color) 0.1rem solid;
 }
 
-.card-container .card .slide-indicator .selected {
+.card-ui-upside .card .slide-indicator .selected {
   background: var(--indicator-selected-background);
   border: var(--indicator-selected-border-color) 0.1rem solid;
 }
 
-.card-container .card .hidden {
+.card-ui-upside .card .hidden {
   display: none;
 }
 
-.card-container .ship-card {
+.card-ui-upside .ship-card {
   background: var(--card-ship-background);
 }
 
-.card-container .system-card {
+.card-ui-upside .system-card {
   background: var(--card-system-background);
 }
 
-.card-container .shop-card {
+.card-ui-upside .shop-card {
   background: var(--card-shop-background);
 }
-.card-container .read-card {
+.card-ui-upside .read-card {
   background: var(--card-read-background);
 }
-.card-container .more-card {
+.card-ui-upside .more-card {
   background: var(--card-more-background);
+}
+
+.card-ui-downside {
+  width: inherit;
+  display: flex;
+  justify-content: center;
+
+  margin:var(--section-margin );
 }

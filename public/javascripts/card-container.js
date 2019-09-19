@@ -1,6 +1,6 @@
 class card_container {
   constructor() {
-    this.card_container = document.querySelector(".card-container");
+    this.card_container = document.querySelector(".card-ui-upside");
     this.card_list = this.card_container.querySelectorAll(".card");
 
     this.bind_event();
@@ -71,5 +71,3 @@ class card_container {
     }, []);
   }
 }
-
-new card_container();
