@@ -1,3 +1,11 @@
+.card-ui-downside {
+  --card-ship-background: purple;
+  --card-system-background: red;
+  --card-shop-background: blue;
+  --card-read-background: orange;
+  --card-more-background: skyblue;
+}
+
 .mini-carousel-container {
   display: flex;
   justify-content: center;
@@ -7,37 +15,114 @@
 .mini-carousel-container .compact-slider {
   width: 70rem;
   height: 30rem;
-  margin: 1rem 5rem;
+  margin: 0rem 2rem;
 }
 
-
-
 .mini-carousel-container .compact-slider .slides .slide .content {
+  display: flex;
+  align-items: center;
+}
+
+.mini-carousel-container .compact-slider .slides .slide .content .left-content {
   width: 30rem;
+  height: 28rem;
+  margin: 0rem 2rem;
+  /* background-color: white; */
+}
+
+.mini-carousel-container
+  .compact-slider
+  .slides
+  .slide
+  .content
+  .left-content
+  .image {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 80%;
+}
+
+.mini-carousel-container
+  .compact-slider
+  .slides
+  .slide
+  .content
+  .right-content {
+  width: 30rem;
+  height: 28rem;
   margin: 1rem 5rem;
   display: flex;
   flex-direction: column;
-  align-items: left;
+  justify-content: center;
 }
-.mini-carousel-container .compact-slider .slides .slide .content  h1 {
-  margin:0rem 0rem;
-  font-size: 3rem;
+.mini-carousel-container
+  .compact-slider
+  .slides
+  .slide
+  .content
+  .right-content
+  h1 {
+  margin: 0rem 0rem;
+  font-size: 2rem;
 }
 
-.mini-carousel-container .compact-slider .slides .slide .content  a {
-  width:fit-content;
+.mini-carousel-container
+  .compact-slider
+  .slides
+  .slide
+  .content
+  .right-content
+  a {
+  width: fit-content;
   text-decoration: none;
   font-weight: bold;
   color: black;
 }
 
-.mini-carousel-container .compact-slider .slides .slide .content  a:hover {
+.mini-carousel-container
+  .compact-slider
+  .slides
+  .slide
+  .content
+  .right-content
+  a:hover {
   text-decoration: underline;
 }
 
-.mini-carousel-container .compact-slider .slides .slide div {
+.mini-carousel-container .compact-slider .slides .slide .content {
   text-decoration: none;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50%;
+}
+
+.card-ui-downside .ship-card {
+  background: var(--card-ship-background);
+}
+
+.card-ui-downside .system-card {
+  background: var(--card-system-background);
+}
+
+.card-ui-downside .shop-card {
+  background: var(--card-shop-background);
+}
+.card-ui-downside .read-card {
+  background: var(--card-read-background);
+}
+.card-ui-downside .more-card {
+  background: var(--card-more-background);
+}
+
+.mini-carousel-container
+  .compact-slider
+  .slides
+  .slide
+  .content
+  .right-content
+  .subtitle {
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5rem;
+  color: white;
 }

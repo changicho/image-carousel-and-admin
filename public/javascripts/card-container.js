@@ -41,11 +41,6 @@ class card_container {
       let target_type = evt.target.classList[0];
 
       if (target_type === "indicator") {
-        
-        // 이 부분에 슬라이드 이동 부분을 추가하면 된다.
-        // slide_index = evt.target.dataset.page (integer)
-        // console.log(evt.target.dataset.page);
-
         this.unselect_all_indicator();
         evt.target.classList.add("selected");
         return;

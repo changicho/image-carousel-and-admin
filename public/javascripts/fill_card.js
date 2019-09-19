@@ -1,87 +1,109 @@
-// const slide_size = 17
-// 총 17개의 슬라이드를 만들어야 한다.
-
 let ul = document.querySelector(".compact-slider ul");
 let indicator_box = document.querySelector(".indicator-box");
 
 let slide_image_style = [
   {
-    color: "blue"
+    color: "blue",
+    theme: "ship-card"
   },
   {
-    color: "gold"
+    color: "gold",
+    theme: "ship-card"
   },
   {
-    color: "orange"
+    color: "orange",
+    theme: "ship-card"
   },
   {
-    color: "gray"
+    color: "gray",
+    theme: "ship-card"
   },
   {
-    color: "purple"
+    color: "purple",
+    theme: "system-card"
   },
   {
-    color: "skyblue"
+    color: "skyblue",
+    theme: "system-card"
   },
   {
-    color: "red"
+    color: "red",
+    theme: "system-card"
   },
   {
-    color: "rosybrown"
+    color: "rosybrown",
+    theme: "system-card"
   },
   {
-    color: "aqua"
+    color: "aqua",
+    theme: "system-card"
   },
   {
-    color: "khaki"
+    color: "khaki",
+    theme: "shop-card"
   },
   {
-    color: "beige"
+    color: "beige",
+    theme: "shop-card"
   },
   {
-    color: "royalblue"
+    color: "royalblue",
+    theme: "shop-card"
   },
   {
-    color: "teal"
+    color: "teal",
+    theme: "shop-card"
   },
   {
-    color: "yellowgreen"
+    color: "yellowgreen",
+    theme: "read-card"
   },
   {
-    color: "chocolate"
+    color: "chocolate",
+    theme: "read-card"
   },
   {
-    color: "coral"
+    color: "coral",
+    theme: "more-card"
   },
   {
-    color: "crimson"
+    color: "crimson",
+    theme: "more-card"
   }
 ];
 
-function make_template(data) {
-  let template = `<li class="slide"><div style="background-color:${
-    data.color
-  };">${make_template_inner(data)}</div></li>`;
+function make_template(data, index) {
+  let template = `<li class="slide"><div class="content">${make_template_inner(data, index)}</div></li>`;
   return template;
 }
 
 slide_image_style.reduce((pre, cur, index) => {
-  ul.innerHTML += make_template(cur);
+  ul.innerHTML += make_template(cur, index);
 }, 0);
 
-function make_template_inner(data) {
-  let template = `<div class="content">
-  <h1>당신의 희생은</h1>
-  <h1>가치있습니다.</h1>
+function make_template_inner(data, index) {
+  let template = `
+  <div class="left-content">
+  <div
+    class="image"
+    style="background-image : url('../images/card/slide_image/${index}.png'); "
+  ></div>
+</div>
+<div class="right-content">
+  <div class="subtitle ${data.theme}">잠이 보약입니다...</div>
+  
+  <h1>어제 잘 주무셨나요?</h1>
   <p>
-    내 삶의 목적이 잘먹고 잘 사는 사람은 보통 사람이라는 거에요. 왜냐. 내가
-    잘 먹고 잘살려면 남의 것 뜯어 먹고 남 괴롭히고, 이런 거밖에 없으니까요.
-    그런데 영웅이란, 다른 사람들을 위해 사는 사람이라는 거죠. 그리고
-    (보통사람들)보다 숭고한 목적과, 숭고한 삶을 추구한다는 거에요.
+    야근을 한다거나 게임, TV 시청 등의 이유로 늦게까지 깨어있으면, 수면을 취하는
+    시간이 그만큼 짧아질 수밖에 없는데요. 하루에 7시간 미만의 충분한 수면을
+    취하지 못하게 되면, 아침에 일어나는 것이 매우 힘겹게 느껴질 수 있습니다.
+    또한, 수면이 부족하면 과식으로 이어지고, 면역 체계가 크게 떨어지며, 여러
+    건강 상 문제가 발생할 수 있습니다.
   </p>
-  <a href="https://www.youtube.com/watch?v=DnkN5Oh0mPA"
-    >영상을 보고 함께해요 ></a
-  >
-</div>`;
+  <a href="https://www.youtube.com/watch?v=O6w4H8tFLQ4">
+    영상을 보고 기운내요!
+  </a>
+</div>
+`;
   return template;
 }
