@@ -1,55 +1,65 @@
-<link rel="stylesheet" href="../stylesheets/carousel.css" />
-<link rel="stylesheet" href="../stylesheets/main.css" />
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<body>
-  <div class="compact-slider">
-    <ul class="slides"></ul>
-    <div class="button" id="prev">
-      <div class="button_icon"></div>
+    <link rel="stylesheet" href="../stylesheets/carousel.css" />
+    <link rel="stylesheet" href="../stylesheets/main.css" />
+    <title>carousel-ver1</title>
+  </head>
+
+  <body>
+    <div class="compact-slider">
+      <ul class="slides"></ul>
+      <div class="button" id="prev">
+        <div class="button_icon"></div>
+      </div>
+      <div class="button" id="next">
+        <div class="button_icon"></div>
+      </div>
+      <div class="indicator-box"></div>
     </div>
-    <div class="button" id="next">
-      <div class="button_icon"></div>
-    </div>
-    <div class="indicator-box"></div>
-  </div>
-</body>
 
-<script>
-  let slides = ["one", "two", "three", "four", "five"];
-  let slides_color = ["red", "blue", "green", "yellow", "purple"];
-  let ul = document.querySelector(".compact-slider ul");
-  let indicator_box = document.querySelector(".indicator-box");
+    <script>
+      let slides = ["one", "two", "three", "four", "five"];
+      let slides_color = ["red", "blue", "green", "yellow", "purple"];
+      let ul = document.querySelector(".compact-slider ul");
+      let indicator_box = document.querySelector(".indicator-box");
 
-  slides.reduce((pre, cur, index) => {
-    ul.innerHTML += `<li class="slide"><div style = "background:${slides_color[index]}">${cur}</div></li>`;
-    indicator_box.innerHTML += `<div class="indicator" data-page="${index}"></div>`;
-  }, 0);
-</script>
+      slides.reduce((pre, cur, index) => {
+        ul.innerHTML += `<li class="slide"><div style = "background:${slides_color[index]}">${cur}</div></li>`;
+        indicator_box.innerHTML += `<div class="indicator" data-page="${index}"></div>`;
+      }, 0);
+    </script>
 
-<script>
-  let div_compact_slider = document.querySelector(".compact-slider");
+    <script>
+      let div_compact_slider = document.querySelector(".compact-slider");
 
-  div_compact_slider.addEventListener("click", evt => {
-    let target_type = evt.target.classList[0];
+      div_compact_slider.addEventListener("click", evt => {
+        let target_type = evt.target.classList[0];
 
-    if (target_type === "indicator") {
-      my_compact_slider.move_to(evt.target.dataset.page);
+        if (target_type === "indicator") {
+          my_compact_slider.move_to(evt.target.dataset.page);
 
-      unselect_all_indicator();
-      evt.target.classList.add("selected");
-      return;
-    }
-  });
+          unselect_all_indicator();
+          evt.target.classList.add("selected");
+          return;
+        }
+      });
 
-  function unselect_all_indicator() {
-    let indicator_list = div_compact_slider.querySelectorAll(".indicator");
+      function unselect_all_indicator() {
+        let indicator_list = div_compact_slider.querySelectorAll(".indicator");
 
-    Array.from(indicator_list).reduce((pre, cur) => {
-      cur.classList.remove("selected");
-    }, []);
-  }
-</script>
-<script src="../javascripts/compact-slider.js"></script>
-<script>
-  let my_compact_slider = new compact_slider();
-</script>
+        Array.from(indicator_list).reduce((pre, cur) => {
+          cur.classList.remove("selected");
+        }, []);
+      }
+    </script>
+    <script src="../javascripts/compact-slider.js"></script>
+    <script>
+      let my_compact_slider = new compact_slider();
+    </script>
+  </body>
+</html>

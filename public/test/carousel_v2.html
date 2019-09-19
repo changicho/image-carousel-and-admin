@@ -1,77 +1,86 @@
-<link rel="stylesheet" href="../stylesheets/carousel.css" />
-<link rel="stylesheet" href="../stylesheets/mini-carousel.css" />
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<body>
-  <div class="mini-carousel-container">
-    <div class="compact-slider">
-      <ul class="slides"></ul>
-      <div class="button" id="prev">
-        <div class="button_icon"></div>
+    <link rel="stylesheet" href="../stylesheets/carousel.css" />
+    <link rel="stylesheet" href="../stylesheets/mini-carousel.css" />
+    <title>carousel-ver2</title>
+  </head>
+
+  <body>
+    <div class="mini-carousel-container">
+      <div class="compact-slider">
+        <ul class="slides"></ul>
+        <div class="button" id="prev">
+          <div class="button_icon"></div>
+        </div>
+        <div class="button" id="next">
+          <div class="button_icon"></div>
+        </div>
       </div>
-      <div class="button" id="next">
-        <div class="button_icon"></div>
+      <div class="content">
+        <h1>당신의 희생은</h1>
+        <h1>가치있습니다.</h1>
+        <p>
+          내 삶의 목적이 잘먹고 잘 사는 사람은 보통 사람이라는 거에요. 왜냐.
+          내가 잘 먹고 잘살려면 남의 것 뜯어 먹고 남 괴롭히고, 이런 거밖에
+          없으니까요. 그런데 영웅이란, 다른 사람들을 위해 사는 사람이라는 거죠.
+          그리고 (보통사람들)보다 숭고한 목적과, 숭고한 삶을 추구한다는 거에요.
+        </p>
+        <a href="https://www.youtube.com/watch?v=DnkN5Oh0mPA"
+          >영상을 보고 함께해요 ></a
+        >
       </div>
     </div>
-    <div class="content">
-      <h1>당신의 희생은</h1>
-      <h1>가치있습니다.</h1>
-      <p>
-        내 삶의 목적이 잘먹고 잘 사는 사람은 보통 사람이라는 거에요. 왜냐. 내가
-        잘 먹고 잘살려면 남의 것 뜯어 먹고 남 괴롭히고, 이런 거밖에 없으니까요.
-        그런데 영웅이란, 다른 사람들을 위해 사는 사람이라는 거죠. 그리고
-        (보통사람들)보다 숭고한 목적과, 숭고한 삶을 추구한다는 거에요.
-      </p>
-      <a href="https://www.youtube.com/watch?v=DnkN5Oh0mPA"
-        >영상을 보고 함께해요 ></a
-      >
-    </div>
-  </div>
-</body>
+    <script>
+      let slides = ["one", "two", "three", "four", "five"];
+      let slides_color = ["red", "blue", "green", "yellow", "purple"];
+      let ul = document.querySelector(".compact-slider ul");
+      let indicator_box = document.querySelector(".indicator-box");
 
-<script>
-  let slides = ["one", "two", "three", "four", "five"];
-  let slides_color = ["red", "blue", "green", "yellow", "purple"];
-  let ul = document.querySelector(".compact-slider ul");
-  let indicator_box = document.querySelector(".indicator-box");
+      let slide_image_style = [
+        {
+          url: `url('../images/slide/captain.png')`,
+          color: "blue",
+          link: `https://www.google.com/search?q=captain+america`
+        },
+        {
+          url: `url('../images/slide/ironman.png')`,
+          color: "gold",
+          link: `https://www.google.com/search?q=iron+man`
+        },
+        {
+          url: `url('../images/slide/spider.png')`,
+          color: "orange",
+          link: `https://www.google.com/search?q=spider+man`
+        },
+        {
+          url: `url('../images/slide/thor.png')`,
+          color: "gray",
+          link: `https://www.google.com/search?q=thor`
+        },
+        {
+          url: `url('../images/slide/venom.png')`,
+          color: "purple",
+          link: `https://www.google.com/search?q=venom`
+        }
+      ];
 
-  let slide_image_style = [
-    {
-      url: `url('../images/slide/captain.png')`,
-      color: "blue",
-      link: `https://www.google.com/search?q=captain+america`
-    },
-    {
-      url: `url('../images/slide/ironman.png')`,
-      color: "gold",
-      link: `https://www.google.com/search?q=iron+man`
-    },
-    {
-      url: `url('../images/slide/spider.png')`,
-      color: "orange",
-      link: `https://www.google.com/search?q=spider+man`
-    },
-    {
-      url: `url('../images/slide/thor.png')`,
-      color: "gray",
-      link: `https://www.google.com/search?q=thor`
-    },
-    {
-      url: `url('../images/slide/venom.png')`,
-      color: "purple",
-      link: `https://www.google.com/search?q=venom`
-    }
-  ];
+      function make_template(style) {
+        let template = `<li class="slide"><div style = "background-image:${style.url}; background-color:${style.color}" OnClick="location.href ='${style.link}'"></div></li>`;
+        return template;
+      }
 
-  function make_template(style) {
-    let template = `<li class="slide"><div style = "background-image:${style.url}; background-color:${style.color}" OnClick="location.href ='${style.link}'"></div></li>`;
-    return template;
-  }
-
-  slide_image_style.reduce((pre, cur, index) => {
-    ul.innerHTML += make_template(cur);
-  }, 0);
-</script>
-<script src="../javascripts/compact-slider.js"></script>
-<script>
-  let my_compact_slider = new compact_slider();
-</script>
+      slide_image_style.reduce((pre, cur, index) => {
+        ul.innerHTML += make_template(cur);
+      }, 0);
+    </script>
+    <script src="../javascripts/compact-slider.js"></script>
+    <script>
+      let my_compact_slider = new compact_slider();
+    </script>
+  </body>
+</html>
