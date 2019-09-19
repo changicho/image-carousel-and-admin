@@ -83,7 +83,7 @@
 }
 
 .compact-slider .indicator-box {
-  background: white;
+  /* background: white; */
   position: absolute;
   width: inherit;
   display: flex;
