@@ -1,15 +1,5 @@
-<!-- <link rel="stylesheet" href="../stylesheets/main.css" /> -->
 <link rel="stylesheet" href="../stylesheets/carousel.css" />
 <link rel="stylesheet" href="../stylesheets/mini-carousel.css" />
-
-<style>
-  /* .center {
-    width: inherit;
-    height: inherit;
-    display: flex;
-    justify-content: center;
-  } */
-</style>
 
 <body>
   <div class="mini-carousel-container">
@@ -39,8 +29,6 @@
 </body>
 
 <script>
-  // let slides = ["one", "two", "three", "four", "five", "six"];
-  // let slides_color = ["red", "blue", "green", "yellow", "purple", "skyblue"];
   let slides = ["one", "two", "three", "four", "five"];
   let slides_color = ["red", "blue", "green", "yellow", "purple"];
   let ul = document.querySelector(".compact-slider ul");
@@ -74,11 +62,6 @@
     }
   ];
 
-  // slides.reduce((pre, cur, index) => {
-  //   ul.innerHTML += `<li class="slide"><div style = "background:${slides_color[index]}">${cur}</div></li>`;
-  //   // indicator_box.innerHTML += `<div class="indicator" data-page="${index+1}"></div>`;
-  // }, 0);
-
   function make_template(style) {
     let template = `<li class="slide"><div style = "background-image:${style.url}; background-color:${style.color}" OnClick="location.href ='${style.link}'"></div></li>`;
     return template;
@@ -89,3 +72,6 @@
   }, 0);
 </script>
 <script src="../javascripts/compact-slider.js"></script>
+<script>
+  let my_compact_slider = new compact_slider();
+</script>
