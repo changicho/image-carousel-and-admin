@@ -7,14 +7,22 @@
     <link rel="stylesheet" href="../stylesheets/main.css" />
     <link rel="stylesheet" href="../stylesheets/carousel.css" />
     <link rel="stylesheet" href="../stylesheets/card-ui.css" />
-    <link rel="stylesheet" href="../stylesheets/card-ui-slide.css" />
     <link rel="stylesheet" href="../stylesheets/mini-carousel.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap"
       rel="stylesheet"
     />
 
-    <title>card-ui-ver2</title>
+    <script src="../javascripts//fetch.js"></script>
+
+    <script src="../javascripts/card/fill_card.js"></script>
+    <script src="../javascripts/slide/fill_slide.js"></script>
+
+    <script src="../javascripts/card/card-container.js"></script>
+    <script src="../javascripts/slide/compact-slider.js"></script>
+    <script src="../javascripts/card/card-ui-event.js"></script>
+
+    <title>compact-slider</title>
   </head>
 
   <body>
@@ -120,26 +128,6 @@
       <h1>좋은 하루 되세요!</h1>
     </div>
 
-    <script src="../javascripts/set_data.js"></script>
-    <!-- <script src="../javascripts//fetch.js"></script> -->
-
-    <script src="../javascripts/card/fill_card.js"></script>
-    <script src="../javascripts/slide/fill_slide.js"></script>
-
-    <script src="../javascripts/card/card-container.js"></script>
-    <script src="../javascripts/slide/compact-slider.js"></script>
-    <script src="../javascripts/card/card-ui-event.js"></script>
-
-    <script>
-      let my_card_container = new card_container();
-      let upside_slider = new compact_slider("#compact-slider_card");
-
-      new card_ui(my_card_container, upside_slider);
-    </script>
-
-    <script>
-      let downside_slider = new compact_slider("#compact-slider1");
-      downside_slider.auto();
-    </script>
+    <script src="../javascripts/main.js"></script>
   </body>
 </html>

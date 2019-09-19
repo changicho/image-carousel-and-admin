@@ -13,4 +13,4 @@ class fill_slide {
   }
 }
 
-new fill_slide(slide_data_second);
+// export default fill_slide

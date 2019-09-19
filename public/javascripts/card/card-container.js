@@ -66,3 +66,5 @@ class card_container {
     }, []);
   }
 }
+
+// export default card_container;

@@ -163,3 +163,4 @@ class compact_slider {
   }
 }
 
+// export default compact_slider;
