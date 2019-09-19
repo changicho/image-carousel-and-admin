@@ -17,6 +17,9 @@ class compact_slider {
 
     this.axis_list = [];
 
+    this.auto_slide = false;
+    this.auto_slide_tile = 0;
+
     this.fill_axis_list(this.slide_list.length);
     this.fill_event();
     this.set_first_slide();
@@ -65,9 +68,11 @@ class compact_slider {
   }
 
   fill_interval_event() {
-    this.interval = setInterval(() => {
-      this.move_next();
-    }, 3000);
+    if (this.auto_slide) {
+      this.interval = setInterval(() => {
+        this.move_next();
+      }, 3000);
+    }
   }
 
   fill_transitionend_event() {
@@ -145,28 +150,17 @@ class compact_slider {
       this.move_prev();
     }
   }
+
+  auto(miliseconds) {
+    this.auto_slide = true;
+    this.auto_slide_tile = miliseconds || 3000;
+    this.reset_interval();
+  }
+
+  stop(){
+    this.auto_slide = false;
+    this.reset_interval();
+  }
 }
 
 let my_compact_slider = new compact_slider();
-
-let div_compact_slider = document.querySelector(".compact-slider");
-
-div_compact_slider.addEventListener("click", evt => {
-  let target_type = evt.target.classList[0];
-
-  if (target_type === "indicator") {
-    my_compact_slider.move_to(evt.target.dataset.page-1)
-
-    unselect_all_indicator();
-    evt.target.classList.add("selected");
-    return;
-  }
-});
-
-function unselect_all_indicator() {
-  let indicator_list = div_compact_slider.querySelectorAll(".indicator");
-
-  Array.from(indicator_list).reduce((pre, cur) => {
-    cur.classList.remove("selected");
-  }, []);
-}
