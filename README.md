@@ -1,4 +1,6 @@
-<h1 align="center">Welcome to 아마존 저장소 👋</h1>
+<h1 align="center">Welcome to My Amazon Card Slider 👋</h1>
+
+heroku로 배포 : [heroku링크](https://cryptic-island-21227.herokuapp.com/)
 
 ![DEMO](./README/hello.gif)
 
