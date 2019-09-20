@@ -1,6 +1,21 @@
 {
-  "name": "membership-amazon",
-  "version": "0.0.0",
+  "name": "아마존 저장소",
+  "version": "1.0.0",
+  "description": "캐러셀 슬라이드 컴포넌트 제작",
+  "author": "Changi Cho",
+  "license": "MIT",
+  "homepage": "https://github.com/changicho",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/changicho/membership-amazon.git"
+  },
+  "bugs": {
+    "url": "git+https://github.com/changicho/membership-amazon/issues"
+  },
+  "engines": {
+    "npm": ">=6.11.3",
+    "node": ">=10.16.0"
+  },
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
