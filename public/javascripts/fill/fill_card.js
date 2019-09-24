@@ -16,9 +16,11 @@ class fill_card {
     }, []);
 
     // add focus, seleted class
-    let fisrt_card = card_container.querySelector('.card');
-    fisrt_card.querySelector('.card-content').classList.add('focus');
-    fisrt_card.querySelector('.indicator').classList.add('selected');
+    let first_card = card_container.querySelector('.card');
+
+    first_card.querySelector('.card-content').classList.add('focus');
+    first_card.querySelector('.slide-indicator').classList.remove('hidden');
+    first_card.querySelector('.indicator').classList.add('selected');
     
     // end of constructor
   }
@@ -29,7 +31,7 @@ class fill_card {
   <div class="card-content ${data.theme}">
     <div class="card-title"><p>${data.title}</p></div>
   </div>
-  <div class="slide-indicator">
+  <div class="slide-indicator hidden">
   </div>
 </div>
 `;

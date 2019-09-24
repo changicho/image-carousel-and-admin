@@ -1,6 +1,10 @@
-let json_data;
-let slide_data_card;
-let slide_data_second;
+let card_data = {
+  card: [],
+  slide: []
+};
+let slide_data = {
+  slide: []
+};
 
 fetch("/api/get_data", {
   method: "POST"
@@ -23,9 +27,11 @@ fetch("/api/get_data", {
     }
     json_data = myJson;
 
-    slide_data_card = json_data.slide;
-    slide_data_second = json_data.card;
+    card_data.card = json_data.card_data.card;
+    card_data.slide = json_data.card_data.slide;
+    
+    slide_data.slide = json_data.slide_data.slide;
 
-    new main_script();
+    new main_script(card_data, slide_data);
   })
   .catch(err => console.error(err));

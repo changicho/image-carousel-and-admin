@@ -12,4 +12,3 @@ class main_script {
     downside_slider.auto();
   }
 }
-new main_script(card_data, slide_data);
