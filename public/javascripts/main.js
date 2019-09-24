@@ -1,7 +1,7 @@
 class main_script {
-  constructor(params) {
-    new fill_card(slide_data_card);
-    new fill_slide(slide_data_second);
+  constructor(card_data, slide_data) {    
+    new fill_card(card_data);
+    new fill_slide(slide_data);
 
     let my_card_container = new card_container();
     let upside_slider = new compact_slider("#compact-slider_card");
@@ -12,3 +12,4 @@ class main_script {
     downside_slider.auto();
   }
 }
+new main_script(card_data, slide_data);

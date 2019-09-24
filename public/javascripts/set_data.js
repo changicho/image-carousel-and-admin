@@ -1,4 +1,35 @@
-let slide_data_card = [
+let card_data = {
+  card: [],
+  slide: []
+};
+let slide_data = {
+  slide: []
+};
+
+card_data.card = [
+  {
+    "theme": "ship-card",
+    "title" : "ship",
+  },
+  {
+    "theme": "system-card",
+    "title" : "system",
+  },
+  {
+    "theme": "shop-card",
+    "title" : "shop",
+  },
+  {
+    "theme": "read-card",
+    "title" : "read",
+  },
+  {
+    "theme": "more-card",
+    "title" : "more",
+  }
+];
+
+card_data.slide = [
   {
     theme: "ship-card",
     keyword: "졸립지 않나요?",
@@ -162,7 +193,7 @@ let slide_data_card = [
   }
 ];
 
-let slide_data_second = [
+slide_data.slide = [
   {
     url: `url('../images/slide/captain.png')`,
     color: "blue",
