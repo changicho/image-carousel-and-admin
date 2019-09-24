@@ -1,0 +1,5 @@
+INSERT INTO downside_slide (url,color,link) VALUES ("url('../images/slide/captain.png')","blue","https://www.google.com/search?q=captain+america");
+INSERT INTO downside_slide (url,color,link) VALUES ("url('../images/slide/ironman.png')","gold","https://www.google.com/search?q=iron+man");
+INSERT INTO downside_slide (url,color,link) VALUES ("url('../images/slide/spider.png')","orange","https://www.google.com/search?q=spider+man");
+INSERT INTO downside_slide (url,color,link) VALUES ("url('../images/slide/thor.png')","gray","https://www.google.com/search?q=thor");
+INSERT INTO downside_slide (url,color,link) VALUES ("url('../images/slide/venom.png')","purple","https://www.google.com/search?q=venom");
