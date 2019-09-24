@@ -18,56 +18,69 @@ class compact_slider {
     this.axis_list = [];
 
     this.auto_slide = false;
-    this.auto_slide_tile = 0;
+    this.auto_slide_time = 0;
 
-    this.fill_axis_list(this.slide_list.length);
-    this.fill_event();
-    this.set_first_slide();
+    this._init();
   }
+  _init() {
+    // this._fill_axis_list(this.slide_list.length);
+    (size => {
+      for (let i = 0; i < size; i++) {
+        this.axis_list.push(this.start_point);
+      }
+    })(this.slide_list.length);
 
-  set_first_slide() {
-    let current_index = parseInt(this.slide_list.length / 2);
-    this.current_index = current_index;
+    this._fill_event();
 
-    Array.from(this.slide_list).reduce((pre, cur) => {
-      cur.style.left = `-${this.slide_width * this.current_index}px`;
-    }, []);
+    // this.set_first_slide();
+    (() => {
+      let current_index = parseInt(this.slide_list.length / 2);
+      this.current_index = current_index;
 
-    for (let i = 0; i < current_index; i++) {
-      this.move_prev();
-    }
-  }
+      Array.from(this.slide_list).reduce((pre, cur) => {
+        cur.style.left = `-${this.slide_width * this.current_index}px`;
+      }, []);
 
-  fill_axis_list(size) {
-    for (let i = 0; i < size; i++) {
-      this.axis_list.push(this.start_point);
-    }
-  }
-  fill_event() {
-    this.fill_button_event();
-    this.fill_interval_event();
-    this.fill_transitionend_event();
-  }
-  fill_button_event() {
-    this.animation_end = true;
-    let button_prev = this.div_slider.querySelector("#prev");
-    let button_next = this.div_slider.querySelector("#next");
-
-    button_prev.addEventListener("click", () => {
-      if (this.animation_end) {
-        this.animation_end = false;
+      for (let i = 0; i < current_index; i++) {
         this.move_prev();
       }
-    });
-    button_next.addEventListener("click", () => {
-      if (this.animation_end) {
-        this.animation_end = false;
-        this.move_next();
-      }
-    });
+    })();
   }
 
-  fill_interval_event() {
+  _fill_event() {
+    // _fill_button_event
+    (() => {
+      this.animation_end = true;
+      let button_prev = this.div_slider.querySelector("#prev");
+      let button_next = this.div_slider.querySelector("#next");
+
+      button_prev.addEventListener("click", () => {
+        if (this.animation_end) {
+          this.animation_end = false;
+          this.move_prev();
+        }
+      });
+      button_next.addEventListener("click", () => {
+        if (this.animation_end) {
+          this.animation_end = false;
+          this.move_next();
+        }
+      });
+    })();
+
+    this._fill_interval_event();
+
+    // _fill_transitionend_event
+    (() => {
+      this.div_slider.addEventListener("transitionend", evt => {
+        evt.target.style.transition = "all 0.5s ease-in-out";
+        evt.target.style.zIndex = "1";
+        this.animation_end = true;
+      });
+    })();
+  }
+
+  _fill_interval_event() {
     if (this.auto_slide) {
       this.interval = setInterval(() => {
         this.move_next();
@@ -75,13 +88,11 @@ class compact_slider {
     }
   }
 
-  fill_transitionend_event() {
-    this.div_slider.addEventListener("transitionend", evt => {
-      evt.target.style.transition = "all 0.5s ease-in-out";
-      evt.target.style.zIndex = "1";
-      this.animation_end = true;
-    });
+  _reset_interval() {
+    clearInterval(this.interval);
+    this._fill_interval_event();
   }
+
   move_prev() {
     let slide_width = this.slide_width;
 
@@ -100,8 +111,9 @@ class compact_slider {
       (this.current_index - 1 + this.slide_list.length) %
       this.slide_list.length;
 
-    this.reset_interval();
+    this._reset_interval();
   }
+
   move_next() {
     let slide_width = this.slide_width;
 
@@ -120,14 +132,9 @@ class compact_slider {
       (this.current_index + 1 + this.slide_list.length) %
       this.slide_list.length;
 
-    this.reset_interval();
+    this._reset_interval();
   }
-
-  reset_interval() {
-    clearInterval(this.interval);
-    this.fill_interval_event();
-  }
-
+  
   move_to(destination_index) {
     let slide_size = this.slide_list.length;
     let current_index = this.current_index;
@@ -153,14 +160,12 @@ class compact_slider {
 
   auto(miliseconds) {
     this.auto_slide = true;
-    this.auto_slide_tile = miliseconds || 3000;
-    this.reset_interval();
+    this.auto_slide_time = miliseconds || 3000;
+    this._reset_interval();
   }
 
-  stop(){
+  stop() {
     this.auto_slide = false;
-    this.reset_interval();
+    this._reset_interval();
   }
 }
-
-// export default compact_slider;
