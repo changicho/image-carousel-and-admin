@@ -1,0 +1,15 @@
+{
+    "mysql": {
+        "database": "amazon",
+        "user": "root",
+        "password": "154321"
+    },
+    "server": {
+        "port": 3306
+    },
+    "app": {
+        "layouts": true,
+        "themes": true,
+        "languages": true
+    }
+}
