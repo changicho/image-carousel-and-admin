@@ -2,11 +2,6 @@ var express = require("express");
 var router = express.Router();
 
 /**
- * set axios
- */
-const axios = require("axios");
-
-/**
  * set mysql
  */
 var mysql = require("mysql");
