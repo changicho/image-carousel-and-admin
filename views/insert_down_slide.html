@@ -44,7 +44,18 @@
 										<p class="card-description">
 											하단 Slide 이미지 슬라이드 부분
 										</p>
-										<form class="forms-sample">
+										<form
+											class="forms-sample"
+											action="./insert_data"
+											accept-charset="utf-8"
+											method="POST"
+										>
+											<input
+												type="text"
+												name="table_name"
+												style="display: none;"
+												value="downside_slide"
+											/>
 											<div class="form-group">
 												<label for="color">Color</label>
 												<input
@@ -66,13 +77,13 @@
 												/>
 											</div>
 											<div class="form-group">
-												<label for="image_link">Image Link</label>
+												<label for="link_url">Link URL</label>
 												<input
 													type="text"
 													class="form-control"
-													id="image_link"
-													name="image_link"
-													placeholder="Image Link"
+													id="link_url"
+													name="link_url"
+													placeholder="Link URL"
 												/>
 											</div>
 											<button type="submit" class="btn btn-primary mr-2">

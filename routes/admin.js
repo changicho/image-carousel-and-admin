@@ -75,51 +75,79 @@ router.post("/check_id", function(req, res, next) {
 });
 
 router.post("/get_admin_list", function(req, res, next) {
-  let _json_data = {
-    upcard_card: [],
-    upcard_slide: [],
-    down_slide: [],
-  };
-  
-  connection.query(
+	let _json_data = {
+		upcard_card: [],
+		upcard_slide: [],
+		down_slide: [],
+	};
+
+	connection.query(
 		"select theme, title from upside_card;",
 		(err, rows, fields) => {
 			let stringfy = JSON.stringify(rows);
 			_json_data.upcard_card = JSON.parse(stringfy);
 		}
-  );
-  
-  connection.query(
+	);
+
+	connection.query(
 		"select theme, keyword, title, image_url from upside_slide;",
 		(err, rows, fields) => {
 			let stringfy = JSON.stringify(rows);
 			_json_data.upcard_slide = JSON.parse(stringfy);
 		}
-  );
-  
-  connection.query(
+	);
+
+	connection.query(
 		"select color, image_url, link_url from downside_slide;",
 		(err, rows, fields) => {
 			let stringfy = JSON.stringify(rows);
-      _json_data.down_slide = JSON.parse(stringfy);
-      
-      res.send(_json_data);
+			_json_data.down_slide = JSON.parse(stringfy);
+
+			res.send(_json_data);
 		}
 	);
 });
 
 router.post("/get_detail", function(req, res, next) {
-  let json = req.body;
-  
-  connection.query(
+	let json = req.body;
+
+	connection.query(
 		`select * from ${table_name} where ${query_where};`,
 		(err, rows, fields) => {
 			let stringfy = JSON.stringify(rows);
 			_json_data.upcard_card = JSON.parse(stringfy);
 		}
-  );
-  
-  res.send(data);
+	);
+
+	res.send(data);
+});
+
+router.post("/insert_data", function(req, res, next) {
+	// console.log(req.body);
+	let json = req.body;
+	let datas = [];
+	let tables = Object.getOwnPropertyNames(json);
+
+	for (key in json) {
+		datas.push(`"${json[key]}"`);
+	}
+	tables.splice(0, 1);
+	datas.splice(0, 1);
+
+	let table_str = tables.join(", ");
+	let data_str = datas.join(", ");
+
+	// console.log(table_str, data_str);
+
+	let query = `INSERT INTO ${json.table_name} (${table_str}) VALUES (${data_str});`;
+
+	console.log(query);
+	connection.query(query, function(err, result) {
+		if (err) throw err;
+		console.log("1 record inserted");
+	});
+
+	res.redirect("./index");
 });
 
 module.exports = router;

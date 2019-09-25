@@ -44,7 +44,18 @@
 										<p class="card-description">
 											상단 Card Slide 카드 부분
 										</p>
-										<form class="forms-sample">
+										<form
+											class="forms-sample"
+											action="./insert_data"
+											accept-charset="utf-8"
+											method="POST"
+										>
+											<input
+												type="text"
+												name="table_name"
+												style="display: none;"
+												value="upside_card"
+											/>
 											<div class="form-group">
 												<label for="theme">Theme</label>
 												<input
