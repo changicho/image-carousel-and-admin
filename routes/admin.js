@@ -24,6 +24,16 @@ router.get("/", function(req, res, next) {
 	res.render("admin-login.html");
 });
 
+/* GET Login page. */
+router.get("/login", function(req, res, next) {
+	res.render("admin-login.html");
+});
+
+/* GET Signup page. */
+router.get("/signup", function(req, res, next) {
+	res.render("admin-signup.html");
+});
+
 /* GET List page. */
 router.get("/index", function(req, res, next) {
 	res.render("admin-list.html");
