@@ -20578,7 +20578,7 @@ dl li {
 
 .main-panel {
   transition: width 0.25s ease, margin 0.25s ease;
-  width: calc(100% - 237px);
+  width: 100%;
   min-height: calc(100vh - 70px);
   display: -webkit-flex;
   display: flex;
@@ -20907,13 +20907,13 @@ dl li {
   color: #9b9b9b;
   padding-left: 2.55rem;
   padding-right: 2.55rem;
-  width: calc(100% - 237px);
+  width: 100%;
   height: 70px;
 }
 
 @media (max-width: 991px) {
   .navbar .navbar-menu-wrapper {
-    width: calc(100% - 55px);
+    width: 100%;
     padding-left: 15px;
     padding-right: 11px;
   }
@@ -21197,7 +21197,7 @@ dl li {
     display: inline-block;
   }
   .sidebar-icon-only .navbar .navbar-menu-wrapper {
-    width: calc(100% - 70px);
+    width: 100%;
   }
   .sidebar-icon-only .sidebar {
     width: 70px;
@@ -21308,7 +21308,7 @@ dl li {
     padding-left: 20px;
   }
   .sidebar-icon-only .main-panel {
-    width: calc(100% - 70px);
+    width: 100%;
   }
 }
 
