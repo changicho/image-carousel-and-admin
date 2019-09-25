@@ -34,6 +34,11 @@ router.get("/index", function(req, res, next) {
 	res.render("admin-list.html");
 });
 
+/* GET Authorization page. */
+router.get("/authorization", function(req, res, next) {
+	res.render("admin-authorization.html");
+});
+
 /* GET Insert Upper Card page. */
 router.get("/insert_upper_card", function(req, res, next) {
 	res.render("insert_upper_card.html");
@@ -74,12 +79,25 @@ router.post("/check_id", function(req, res, next) {
 	);
 });
 
+router.post("/get_user_list", function(req, res, next) {
+	connection.query("select id, admin from user;", (err, rows, fields) => {
+		let stringfy = JSON.stringify(rows);
+		res.send(JSON.parse(stringfy));
+	});
+});
+
 router.post("/get_admin_list", function(req, res, next) {
 	let _json_data = {
+		user: [],
 		upcard_card: [],
 		upcard_slide: [],
 		down_slide: [],
 	};
+
+	connection.query("select id, admin from user;", (err, rows, fields) => {
+		let stringfy = JSON.stringify(rows);
+		_json_data.user = JSON.parse(stringfy);
+	});
 
 	connection.query(
 		"select theme, title from upside_card;",
