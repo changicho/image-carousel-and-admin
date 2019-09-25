@@ -29,6 +29,21 @@ router.get("/index", function(req, res, next) {
 	res.render("admin-list.html");
 });
 
+/* GET Insert Upper Card page. */
+router.get("/insert_upper_card", function(req, res, next) {
+	res.render("insert_upper_card.html");
+});
+
+/* GET Insert Upper Slide page. */
+router.get("/insert_upper_slide", function(req, res, next) {
+	res.render("insert_upper_slide.html");
+});
+
+/* GET Insert Down Slide page. */
+router.get("/insert_down_slide", function(req, res, next) {
+	res.render("insert_down_slide.html");
+});
+
 router.post("/check_id", function(req, res, next) {
 	connection.query(
 		`select * from user where id='${req.body.id || "EMPTY"}';`,
