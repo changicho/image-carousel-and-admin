@@ -1,6 +1,14 @@
 var express = require("express");
 var router = express.Router();
 
+/**
+ * set axios
+ */
+const axios = require("axios");
+
+/**
+ * set mysql
+ */
 var mysql = require("mysql");
 var connection = mysql.createConnection({
 	host: "localhost",
@@ -9,12 +17,16 @@ var connection = mysql.createConnection({
 	port: 3306,
 	database: "amazon",
 });
-
 connection.connect();
 
-/* GET home page. */
+/* GET Admin page. */
 router.get("/", function(req, res, next) {
 	res.render("admin-login.html");
+});
+
+/* GET List page. */
+router.get("/index", function(req, res, next) {
+	res.render("admin-list.html");
 });
 
 router.post("/check_id", function(req, res, next) {
@@ -42,28 +54,52 @@ router.post("/check_id", function(req, res, next) {
 	);
 });
 
-router.post("/get_downside_slide", function(req, res, next) {
-	connection.query("select * from downside_slide", (err, rows, fields) => {
-		let stringfy = JSON.stringify(rows);
-		let json = JSON.parse(stringfy);
-		res.send({ data: json });
-	});
+router.post("/get_admin_list", function(req, res, next) {
+  let _json_data = {
+    upcard_card: [],
+    upcard_slide: [],
+    down_slide: [],
+  };
+  
+  connection.query(
+		"select theme, title from upside_card;",
+		(err, rows, fields) => {
+			let stringfy = JSON.stringify(rows);
+			_json_data.upcard_card = JSON.parse(stringfy);
+		}
+  );
+  
+  connection.query(
+		"select theme, keyword, title, image_url from upside_slide;",
+		(err, rows, fields) => {
+			let stringfy = JSON.stringify(rows);
+			_json_data.upcard_slide = JSON.parse(stringfy);
+		}
+  );
+  
+  connection.query(
+		"select color, image_url, link_url from downside_slide;",
+		(err, rows, fields) => {
+			let stringfy = JSON.stringify(rows);
+      _json_data.down_slide = JSON.parse(stringfy);
+      
+      res.send(_json_data);
+		}
+	);
 });
 
-router.post("/get_upside_card", function(req, res, next) {
-	connection.query("select * from upside_card", (err, rows, fields) => {
-		let stringfy = JSON.stringify(rows);
-		let json = JSON.parse(stringfy);
-		res.send({ data: json });
-	});
-});
-
-router.post("/get_upside_slide", function(req, res, next) {
-	connection.query("select * from upside_slide", (err, rows, fields) => {
-		let stringfy = JSON.stringify(rows);
-		let json = JSON.parse(stringfy);
-		res.send({ data: json });
-	});
+router.post("/get_detail", function(req, res, next) {
+  let json = req.body;
+  
+  connection.query(
+		`select * from ${table_name} where ${query_where};`,
+		(err, rows, fields) => {
+			let stringfy = JSON.stringify(rows);
+			_json_data.upcard_card = JSON.parse(stringfy);
+		}
+  );
+  
+  res.send(data);
 });
 
 module.exports = router;
