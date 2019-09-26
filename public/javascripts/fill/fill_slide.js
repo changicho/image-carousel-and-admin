@@ -8,7 +8,7 @@ class fill_slide {
   }
 
   _make_template(style) {
-    let template = `<li class="slide"><div style = "background-image:${style.url}; background-color:${style.color}" OnClick="location.href ='${style.link}'"></div></li>`;
+    let template = `<li class="slide"><div style = "background-image:${style.image_url}; background-color:${style.color}" OnClick="location.href ='${style.link}'"></div></li>`;
     return template;
   }
 

@@ -36,8 +36,38 @@ router.get("/", function(req, res, next) {
 });
 
 router.post("/get_data", function(req, res, next) {
-	fs.readFile("./public/data/data.json", "utf8", function(err, contents) {
-		res.send(contents);
+	let _json_data = {
+		card_data: {
+			card: [],
+			slide: [],
+		},
+		slide_data: {
+			slide: [],
+		},
+	};
+
+	connection.query(
+		"select theme, title from upside_card order by card_index;",
+		(err, rows, fields) => {
+			let stringfy = JSON.stringify(rows);
+			_json_data.card_data.card = JSON.parse(stringfy);
+		}
+	);
+
+  
+  let query = `select * from upside_slide order by card_index;`;
+	connection.query(query, (err, rows, fields) => {
+		let stringfy = JSON.stringify(rows);
+		let json = JSON.parse(stringfy);
+
+    _json_data.card_data.slide = json;
+	});
+
+	connection.query("select * from downside_slide;", (err, rows, fields) => {
+		let stringfy = JSON.stringify(rows);
+		_json_data.slide_data.slide = JSON.parse(stringfy);
+
+		res.send(_json_data);
 	});
 });
 
@@ -92,7 +122,7 @@ router.post("/get_admin_list", function(req, res, next) {
 	});
 
 	connection.query(
-		"select theme, title from upside_card;",
+		"select card_index, theme, title from upside_card;",
 		(err, rows, fields) => {
 			let stringfy = JSON.stringify(rows);
 			_json_data.upcard_card = JSON.parse(stringfy);
@@ -100,7 +130,7 @@ router.post("/get_admin_list", function(req, res, next) {
 	);
 
 	connection.query(
-		"select theme, keyword, title, image_url from upside_slide;",
+		"select card_index, theme, keyword, title, image_url from upside_slide;",
 		(err, rows, fields) => {
 			let stringfy = JSON.stringify(rows);
 			_json_data.upcard_slide = JSON.parse(stringfy);
