@@ -1,6 +1,9 @@
 <h1 align="center">Welcome to My Amazon Card Slider 👋</h1>
 
 heroku로 배포 : [heroku링크](https://cryptic-island-21227.herokuapp.com/)
+Ncloud로 배포 : [Ncloud](http://106.10.38.46/)
+
+> /admin 으로 관리자 페이지 접근 가능
 
 ![DEMO](./README/hello.gif)
 
@@ -56,13 +59,13 @@ Compact-Slider는 다음과 같은 html 돔 구조를 따릅니다.
 
 ```html
 <div class="compact-slider" id="user-compact-slider">
-  <ul class="slides">
-    <li class="slide">slide 1</li>
-    <li class="slide">slide 2</li>
-    <!-- insert your own slide -->
-  </ul>
-  <div class="button" id="prev"></div>
-  <div class="button" id="next"></div>
+	<ul class="slides">
+		<li class="slide">slide 1</li>
+		<li class="slide">slide 2</li>
+		<!-- insert your own slide -->
+	</ul>
+	<div class="button" id="prev"></div>
+	<div class="button" id="next"></div>
 </div>
 ```
 
@@ -127,11 +130,11 @@ Compact-Slider의 move_next(), move_prev 메소드를 이용하시면 됩니다!
 
 ```html
 <div class="compact-slider" id="user-compact-slider">
-  <ul class="slides">
-    <!-- insert your own slide -->
-  </ul>
-  <div class="button" id="prev"></div>
-  <div class="button" id="next"></div>
+	<ul class="slides">
+		<!-- insert your own slide -->
+	</ul>
+	<div class="button" id="prev"></div>
+	<div class="button" id="next"></div>
 </div>
 ```
 
@@ -165,4 +168,3 @@ DOM 구조에서 id 값을 prev, next로 설정하시면 자동적으로 버튼�
 
 Copyright © 2019 [Changi Cho](https://github.com/changicho).<br />
 This project is [MIT](https://github.com/changicho/membership-amazon/blob/master/LICENSE) licensed.
-
