@@ -54,6 +54,11 @@ router.get("/insert_down_slide", function(req, res, next) {
 	res.render("insert_down_slide.html");
 });
 
+/* GET File Upload page. */
+router.get("/upload", function(req, res, next) {
+	res.render("admin-upload.html");
+});
+
 router.post("/check_id", function(req, res, next) {
 	connection.query(
 		`select * from user where id='${req.body.id || "EMPTY"}';`,
