@@ -5,7 +5,13 @@ var router = express.Router();
 
 /* GET Admin page. */
 router.get("/", function(req, res, next) {
-	res.render("admin-login.html");
+  // console.log(req.session);
+  console.log(req.user);
+  if(req.user !== undefined){
+    res.redirect("/admin/index");
+  }else{
+    res.redirect("/admin/login")
+  }
 });
 
 /* GET Login page. */
@@ -20,6 +26,7 @@ router.get("/signup", function(req, res, next) {
 
 /* GET List page. */
 router.get("/index", function(req, res, next) {
+  console.log(req.session);
 	res.render("admin-list.html");
 });
 
@@ -47,7 +54,6 @@ router.get("/insert_down_slide", function(req, res, next) {
 router.get("/upload", function(req, res, next) {
 	res.render("admin-upload.html");
 });
-
 
 
 module.exports = router;

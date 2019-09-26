@@ -1,6 +1,5 @@
 var express = require("express");
 var router = express.Router();
-var fs = require("fs");
 var multer = require("multer"); // express에 multer모듈 적용 (for 파일업로드)
 var mysql = require("mysql");
 
@@ -30,11 +29,6 @@ const upload = multer({
 	}),
 });
 
-/* GET users listing. */
-router.get("/", function(req, res, next) {
-	res.send("respond with a resource");
-});
-
 router.post("/get_data", function(req, res, next) {
 	let _json_data = {
 		card_data: {
@@ -54,13 +48,12 @@ router.post("/get_data", function(req, res, next) {
 		}
 	);
 
-  
-  let query = `select * from upside_slide order by card_index;`;
+	let query = `select * from upside_slide order by card_index;`;
 	connection.query(query, (err, rows, fields) => {
 		let stringfy = JSON.stringify(rows);
 		let json = JSON.parse(stringfy);
 
-    _json_data.card_data.slide = json;
+		_json_data.card_data.slide = json;
 	});
 
 	connection.query("select * from downside_slide;", (err, rows, fields) => {
