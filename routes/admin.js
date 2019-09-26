@@ -173,4 +173,19 @@ router.post("/insert_data", function(req, res, next) {
 	res.redirect("./index");
 });
 
+// authorization
+// query : `UPDATE user SET admin="${boolean}" WHERE  id="${data.id}";`
+router.post("/authorization", function(req, res, next) {
+  // console.log(req.body);
+  data = req.body;
+	let boolean = "true";
+	let query = `UPDATE user SET admin="${boolean}" WHERE  id="${data.id}";`;
+
+	connection.query(query, function(err, result) {
+		if (err) throw err;
+		console.log("update 1 record");
+	});
+	res.redirect("back");
+});
+
 module.exports = router;
