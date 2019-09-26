@@ -47,7 +47,7 @@ function fill_all(data) {
 /**
  *
  */
-fetch("/admin/get_admin_list", {
+fetch("/api/get_admin_list", {
 	method: "POST",
 })
 	.then(function(response) {

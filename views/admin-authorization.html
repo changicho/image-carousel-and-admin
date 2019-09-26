@@ -82,7 +82,7 @@
 		<script>
       let form_id = document.querySelector('#form_id');
 
-			fetch("./get_user_list", {
+			fetch("/api/get_user_list", {
 				method: "POST",
 			})
 				.then(function(response) {
