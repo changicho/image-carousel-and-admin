@@ -31,8 +31,8 @@ module.exports = passport => {
 					`select * from user where id="${id}"`,
 					(err, rows, fields) => {
 						let stringfy = JSON.stringify(rows);
-            let json = JSON.parse(stringfy);
-            
+						let json = JSON.parse(stringfy);
+
 						if (rows.length === 0) {
 							// console.log("not match");
 							done(null, "사용자가 조회되지 않음");
@@ -40,6 +40,12 @@ module.exports = passport => {
 							user.password = json[0].password;
 
 							if (pw === user.password) {
+                console.log(json[0].admin);
+								if (json[0].admin == "true") {
+									user.id = "admin";
+								} else {
+									user.id = "user";
+								}
 								console.log("localStrategy에서 id,pw 일치 확인");
 								done(null, user);
 							}
