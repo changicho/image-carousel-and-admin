@@ -35,12 +35,12 @@ module.exports = passport => {
             
 						if (rows.length === 0) {
 							// console.log("not match");
-							done(true);
+							done(null, "사용자가 조회되지 않음");
 						} else {
 							user.password = json[0].password;
 
 							if (pw === user.password) {
-								console.log("localStrategy에서 id,pw 조회 성공");
+								console.log("localStrategy에서 id,pw 일치 확인");
 								done(null, user);
 							}
 						}

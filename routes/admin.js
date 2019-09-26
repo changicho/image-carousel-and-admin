@@ -6,7 +6,7 @@ var router = express.Router();
 /* GET Admin page. */
 router.get("/", function(req, res, next) {
   // console.log(req.session);
-  console.log(req.user);
+  // console.log(req.user);
   if(req.user !== undefined){
     res.redirect("/admin/index");
   }else{
@@ -16,6 +16,7 @@ router.get("/", function(req, res, next) {
 
 /* GET Login page. */
 router.get("/login", function(req, res, next) {
+  console.log(req.user);
 	res.render("admin-login.html");
 });
 
@@ -26,7 +27,8 @@ router.get("/signup", function(req, res, next) {
 
 /* GET List page. */
 router.get("/index", function(req, res, next) {
-  console.log(req.session);
+  // console.log(req.session);
+  console.log(req.user);
 	res.render("admin-list.html");
 });
 

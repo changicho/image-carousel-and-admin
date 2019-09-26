@@ -64,6 +64,18 @@ router.post("/get_data", function(req, res, next) {
 	});
 });
 
+router.post("/signup", function(req, res, next) {
+	let json = req.body;
+
+	let query = `INSERT INTO USER (id, password) VALUES ("${json.id}","${json.password}");`;
+	connection.query(query, function(err, result) {
+		if (err) throw err;
+		console.log("1 record inserted in user table");
+  });
+  
+  res.redirect("/admin/login");
+});
+
 router.post("/upload", upload.single("userfile"), function(req, res) {
 	res.redirect("../admin/index"); // object를 리턴함
 	console.log(req.file); // 콘솔(터미널)을 통해서 req.file Object 내용 확인 가능.
@@ -156,7 +168,6 @@ router.post("/get_detail", function(req, res, next) {
 });
 
 router.post("/insert_data", function(req, res, next) {
-	// console.log(req.body);
 	let json = req.body;
 	let datas = [];
 	let tables = Object.getOwnPropertyNames(json);
@@ -170,11 +181,7 @@ router.post("/insert_data", function(req, res, next) {
 	let table_str = tables.join(", ");
 	let data_str = datas.join(", ");
 
-	// console.log(table_str, data_str);
-
 	let query = `INSERT INTO ${json.table_name} (${table_str}) VALUES (${data_str});`;
-
-	console.log(query);
 	connection.query(query, function(err, result) {
 		if (err) throw err;
 		console.log("1 record inserted");

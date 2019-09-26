@@ -1,12 +1,13 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 
 const session = require("express-session");
 const passport = require("passport");
 const passportConfig = require("./passport"); // passport/index.js
+// https://kosaf04pyh.tistory.com/23 참고해서 passport 구현
 
 var indexRouter = require("./routes/index");
 var apiRouter = require("./routes/api");
@@ -55,12 +56,12 @@ app.use("/admin", adminRouter);
 app.post("/login", (req, res, next) => {
 	passport.authenticate("local", (authError, user, info) => {
 		// passport/localStrategy.js를 실행시킵니다.  (1)
-
 		return req.login(user, loginError => {
-			if (loginError) {
-				console.log("login Error FFFFFFFF");
-			} else {
+			if (!loginError) {
 				res.redirect("/admin/index");
+			} else {
+        console.log("login Error");
+				res.redirect("/admin/");
 			}
 		});
 	})(req, res, next);
