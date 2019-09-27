@@ -93,7 +93,9 @@ function template_upcard_card(data) {
   <td>${data.card_index}</td>
   <td>${data.theme}</td>
   <td>${data.title}</td>
-  <td><button type="submit" class="btn btn-primary">DELETE</button></td>
+  <td><div data-table="upside_card" data-key="title" data-value="${data.title}">
+    <button type="submit" class="btn btn-primary">DELETE</button>
+  </div></td>
 </tr>`;
 	return template;
 }
@@ -109,7 +111,9 @@ function template_upcard_slide(data) {
   <td>${data.keyword}</td>
   <td>${data.title}</td>
   <td>${data.image_url}</td>
-  <td><button type="submit" class="btn btn-primary">DELETE</button></td>
+  <td><div data-table="upside_slide" data-key="keyword" data-value="${data.keyword}">
+    <button type="submit" class="btn btn-primary">DELETE</button>
+  </div></td>
 </tr>`;
 	return template;
 }
@@ -123,22 +127,43 @@ function template_down_slide(data) {
   <td>${data.color}</td>
   <td>${data.image_url}</td>
   <td>${data.link_url}</td>
-  <td><button type="submit" class="btn btn-primary">DELETE</button></td>
+  <td><div data-table="downside_slide" data-key="link_url" data-value="${data.link_url}"><button type="submit" class="btn btn-primary">DELETE</button></div></td>
 </tr>`;
 	return template;
 }
 
-// document.querySelector(".row").addEventListener("click", function(evt) {
-// 	let target = evt.target;
-// 	if (target.tagName === "BUTTON") {
-// 		let parrent = target.parentNode.parentElement;
-// 		let form = parrent.parentNode.parentElement.parentElement;
-//     let value_tag = form.querySelector(".value");
-    
-// 		let datas = parrent.querySelectorAll("td");
-//     value_tag.value = datas[2].innerHTML;
-//     console.log(value_tag);
-//     console.log(datas)
-    
-// 	}
-// });
+upcard_card_continer = document.querySelector("#upcard_card_container");
+upcard_slide_continer = document.querySelector("#upcard_slide_container");
+down_slide_continer = document.querySelector("#down_slide_container");
+
+upcard_card_continer.addEventListener("click", function(evt) {
+	let target = evt.target;
+	if (target.tagName === "BUTTON") {
+		fill_data(target);
+	}
+});
+
+upcard_slide_continer.addEventListener("click", function(evt) {
+	let target = evt.target;
+	if (target.tagName === "BUTTON") {
+		fill_data(target);
+	}
+});
+
+down_slide_continer.addEventListener("click", function(evt) {
+	let target = evt.target;
+	if (target.tagName === "BUTTON") {
+		fill_data(target);
+	}
+});
+
+function fill_data(target) {
+	let parrent = target.parentElement;
+	let form =
+		parrent.parentElement.parentElement.parentElement.parentElement
+			.parentElement;
+	let inputs = form.querySelectorAll("input");
+	inputs[0].value = parrent.dataset.table;
+	inputs[1].value = parrent.dataset.key;
+	inputs[2].value = parrent.dataset.value;
+}

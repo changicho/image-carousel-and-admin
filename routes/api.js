@@ -191,25 +191,25 @@ router.post("/insert_data", function(req, res, next) {
 });
 
 router.post("/delete", function(req, res, next) {
-	if (req.user === undefined) {
-		res.redirect("/admin/");
+	if (req.user !== "admin") {
+		console.log("not admin");
+		res.redirect("/admin/error");
+	} else {
+		let json = req.body;
+
+		let query = `DELETE FROM ${json.table} WHERE ${json.key}="${json.value}";`;
+		connection.query(query, function(err, result) {
+			if (err) throw err;
+			console.log(`1 record deleted : ${query}`);
+		});
+
+		res.redirect("/admin/index");
 	}
-
-	let json = req.body;
-	console.log("delete", json);
-	// let query = `DELETE FROM ${json.table_name} WHERE ${json.key}=${json.value}`;
-	// connection.query(query, function(err, result) {
-	// 	if (err) throw err;
-	// 	console.log("1 record deleted");
-	// });
-
-	// res.redirect("/admin/index");
 });
 
 // authorization
 // query : `UPDATE user SET admin="${boolean}" WHERE  id="${data.id}";`
 router.post("/authorization", function(req, res, next) {
-	// console.log(req.body);
 	data = req.body;
 	let boolean = "true";
 	let query = `UPDATE user SET admin="${boolean}" WHERE  id="${data.id}";`;
@@ -222,8 +222,8 @@ router.post("/authorization", function(req, res, next) {
 });
 
 router.post("/logout", function(req, res, next) {
-  req.logout();
-  res.redirect('/admin/')
+	req.logout();
+	res.redirect("/admin/");
 });
 
 module.exports = router;
