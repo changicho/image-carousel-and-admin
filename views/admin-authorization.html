@@ -16,50 +16,66 @@
 
 	<body>
 		<div class="container-scroller">
-			<div class="main-panel">
-				<div class="content-wrapper">
-					<div class="row">
-						<div
-							id="user_container"
-							class="col-lg-12 grid-margin stretch-card table-hover"
-						>
-							<div class="card">
-								<div class="card-body">
-									<h4 class="card-title">user table</h4>
-									<p class="card-description">
-										관리자 권한을 부여할 수 있습니다.
-									</p>
-									<form action="/api/authorization" method="post">
-										<input
-											type="text"
-											id="form_id"
-											name="id"
-											value="ah"
-											style="display:none;"
-										/>
+			<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+				<div
+					class="navbar-menu-wrapper d-flex align-items-center justify-content-end"
+				>
+					<ul class="navbar-nav mr-lg-2"></ul>
+					<ul class="navbar-nav navbar-nav-right"></ul>
+					<form action="/api/logout" method="post">
+						<button type="submit" class="btn btn-secondary btn-rounded btn-fw">
+							로그아웃
+						</button>
+					</form>
+				</div>
+			</nav>
+			<div class="container-fluid page-body-wrapper">
+				<div class="main-panel">
+					<div class="content-wrapper">
+						<div class="row">
+							<div
+								id="user_container"
+								class="col-lg-12 grid-margin stretch-card table-hover"
+							>
+								<div class="card">
+									<div class="card-body">
+										<h4 class="card-title">user table</h4>
+										<p class="card-description">
+											관리자 권한을 부여할 수 있습니다.
+										</p>
+										<form action="/api/authorization" method="post">
+											<input
+												type="text"
+												id="form_id"
+												name="id"
+												value="ah"
+												style="display:none;"
+											/>
 
-										<div class="table-responsive pt-3">
-											<table class="table table-bordered">
-												<thead>
-													<tr>
-														<th>ID</th>
-														<th>Admin</th>
-														<th>Authorization?</th>
-													</tr>
-												</thead>
-												<tbody></tbody>
-											</table>
-										</div>
-									</form>
+											<div class="table-responsive pt-3">
+												<table class="table table-bordered">
+													<thead>
+														<tr>
+															<th>ID</th>
+															<th>Admin</th>
+															<th>Authorization?</th>
+														</tr>
+													</thead>
+													<tbody></tbody>
+												</table>
+											</div>
+										</form>
+									</div>
+									<a href="/admin/index" class="btn btn-light">
+										뒤로가기
+									</a>
 								</div>
-								<a href="/admin/index" class="btn btn-light">
-									뒤로가기
-								</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+
 			<footer class="footer">
 				<div
 					class="d-sm-flex justify-content-center justify-content-sm-between"

@@ -93,6 +93,7 @@ function template_upcard_card(data) {
   <td>${data.card_index}</td>
   <td>${data.theme}</td>
   <td>${data.title}</td>
+  <td><button type="submit" class="btn btn-primary">DELETE</button></td>
 </tr>`;
 	return template;
 }
@@ -108,6 +109,7 @@ function template_upcard_slide(data) {
   <td>${data.keyword}</td>
   <td>${data.title}</td>
   <td>${data.image_url}</td>
+  <td><button type="submit" class="btn btn-primary">DELETE</button></td>
 </tr>`;
 	return template;
 }
@@ -121,6 +123,22 @@ function template_down_slide(data) {
   <td>${data.color}</td>
   <td>${data.image_url}</td>
   <td>${data.link_url}</td>
+  <td><button type="submit" class="btn btn-primary">DELETE</button></td>
 </tr>`;
 	return template;
 }
+
+// document.querySelector(".row").addEventListener("click", function(evt) {
+// 	let target = evt.target;
+// 	if (target.tagName === "BUTTON") {
+// 		let parrent = target.parentNode.parentElement;
+// 		let form = parrent.parentNode.parentElement.parentElement;
+//     let value_tag = form.querySelector(".value");
+    
+// 		let datas = parrent.querySelectorAll("td");
+//     value_tag.value = datas[2].innerHTML;
+//     console.log(value_tag);
+//     console.log(datas)
+    
+// 	}
+// });

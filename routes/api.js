@@ -71,9 +71,9 @@ router.post("/signup", function(req, res, next) {
 	connection.query(query, function(err, result) {
 		if (err) throw err;
 		console.log("1 record inserted in user table");
-  });
-  
-  res.redirect("/admin/login");
+	});
+
+	res.redirect("/admin/login");
 });
 
 router.post("/upload", upload.single("userfile"), function(req, res) {
@@ -190,6 +190,22 @@ router.post("/insert_data", function(req, res, next) {
 	res.redirect("/admin/index");
 });
 
+router.post("/delete", function(req, res, next) {
+	if (req.user === undefined) {
+		res.redirect("/admin/");
+	}
+
+	let json = req.body;
+	console.log("delete", json);
+	// let query = `DELETE FROM ${json.table_name} WHERE ${json.key}=${json.value}`;
+	// connection.query(query, function(err, result) {
+	// 	if (err) throw err;
+	// 	console.log("1 record deleted");
+	// });
+
+	// res.redirect("/admin/index");
+});
+
 // authorization
 // query : `UPDATE user SET admin="${boolean}" WHERE  id="${data.id}";`
 router.post("/authorization", function(req, res, next) {
@@ -203,6 +219,11 @@ router.post("/authorization", function(req, res, next) {
 		console.log("update 1 record");
 	});
 	res.redirect("back");
+});
+
+router.post("/logout", function(req, res, next) {
+  req.logout();
+  res.redirect('/admin/')
 });
 
 module.exports = router;
