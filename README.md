@@ -6,6 +6,7 @@ Ncloud로 배포 : [Ncloud](http://106.10.38.46/)
 > /admin 으로 관리자 페이지 접근 가능
 
 ![DEMO](./README/hello.gif)
+![DEMO](./README/admin.gif)
 
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
@@ -34,6 +35,7 @@ Ncloud로 배포 : [Ncloud](http://106.10.38.46/)
 
 - npm >=6.11.3
 - node >=10.16.0
+- mysql >= 8.0.17
 
 ## 설치
 
@@ -46,6 +48,107 @@ npm install
 ```sh
 npm run start
 ```
+
+---
+
+## Admin Page How to Use
+
+mysql의 amazon 데이터 베이스가 필요합니다.
+
+### 데이터 베이스 구조 (amazon)
+
+```bash
++--------------------+
+| Database           |
++--------------------+
+| amazon             |
++--------------------+
+```
+
+```bash
+mysql> show tables;
++------------------+
+| Tables_in_amazon |
++------------------+
+| downside_slide   |
+| upside_card      |
+| upside_slide     |
+| user             |
++------------------+
+```
+
+```bash
+mysql> DESC downside_slide;
++-----------+------+------+-----+---------+-------+
+| Field     | Type | Null | Key | Default | Extra |
++-----------+------+------+-----+---------+-------+
+| image_url | text | NO   |     | NULL    |       |
+| color     | text | NO   |     | NULL    |       |
+| link_url  | text | NO   |     | NULL    |       |
++-----------+------+------+-----+---------+-------+
+```
+
+```bash
+mysql> DESC upside_card;
++------------+----------+------+-----+---------+-------+
+| Field      | Type     | Null | Key | Default | Extra |
++------------+----------+------+-----+---------+-------+
+| card_index | int(11)  | NO   |     | 0       |       |
+| theme      | char(50) | NO   |     | NULL    |       |
+| title      | char(50) | NO   |     | NULL    |       |
++------------+----------+------+-----+---------+-------+
+```
+
+```bash
+mysql> DESC upside_slide;
++------------+----------+------+-----+---------+-------+
+| Field      | Type     | Null | Key | Default | Extra |
++------------+----------+------+-----+---------+-------+
+| card_index | int(11)  | NO   |     | NULL    |       |
+| theme      | char(50) | NO   |     | NULL    |       |
+| keyword    | text     | NO   |     | NULL    |       |
+| image_url  | text     | NO   |     | NULL    |       |
+| title      | text     | YES  |     | NULL    |       |
+| content    | text     | YES  |     | NULL    |       |
+| link       | text     | YES  |     | NULL    |       |
+| link_text  | text     | YES  |     | NULL    |       |
++------------+----------+------+-----+---------+-------+
+```
+
+```bash
+mysql> DESC user;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| id       | char(20) | NO   |     | NULL    |       |
+| password | char(20) | NO   |     | NULL    |       |
+| admin    | char(5)  | NO   |     | false   |       |
++----------+----------+------+-----+---------+-------+
+```
+
+### 회원가입
+
+![DEMO](./README/signup.gif)
+
+회원가입 후엔 관리자 권한이 없으니 유의해주세요!
+
+### 데이터 입력 (관리자)
+
+![DEMO](./README/insert.gif)
+
+### 데이터 삭제 (관리자)
+
+![DEMO](./README/delete.gif)
+
+### 이미지 업로드 (관리자)
+
+![DEMO](./README/upload.gif)
+
+파일 업로드 페이지 버튼을 누르면 업로드 창으로 이동합니다!
+
+### 관리자 권한 부여 (관리자)
+
+![DEMO](./README/author.gif)
 
 ---
 
